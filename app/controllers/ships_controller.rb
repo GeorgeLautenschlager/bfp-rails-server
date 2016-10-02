@@ -3,6 +3,8 @@ class ShipsController < ApplicationController
 
   def move
     @ship.move!(params[:distance].to_i)
+
+    render json: @ship
   end
 
   private
