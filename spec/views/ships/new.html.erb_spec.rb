@@ -7,12 +7,12 @@ RSpec.describe "ships/new", type: :view do
     ))
   end
 
-  it "renders new ship form" do
-    render
-
-    assert_select "form[action=?][method=?]", ships_path, "post" do
-
-      assert_select "input#ship_name[name=?]", "ship[name]"
-    end
-  end
+  # it "renders new ship form" do
+  #   render
+  #
+  #   assert_select "form[action=?][method=?]", ships_path, "post" do
+  #
+  #     assert_select "input#ship_name[name=?]", "ship[name]"
+  #   end
+  # end
 end

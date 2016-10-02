@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  resources :ships
   root 'games#new'
+
+  resources :ships do
+    member do
+      patch 'move'
+    end
+  end
 end
