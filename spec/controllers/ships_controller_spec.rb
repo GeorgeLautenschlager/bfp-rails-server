@@ -23,26 +23,30 @@ RSpec.describe ShipsController, type: :controller do
     end
   end
 
-  describe "GET #ship" do
-    it "returns a ship resource"
+  describe "GET #show" do
+    it "returns a ship resource" do
+      get :show, params: {id: @ship1}
+      expect(response.status).to eq(200)
+
+      json = JSON.parse(response.body)
+      expect(json["ship"]).to eq(@ship1.to_json)
+    end
   end
 
-  describe "PUT #move" do
+  describe "PUT #update" do
     context "with valid params" do
       it "updates the requested ship" do
         expect{
-          patch :move, params: {id: @ship1.id, distance: 50}
+          patch :update, params: {id: @ship1.id, distance: 50}
+          expect(response.status).to eq(200)
         }.to change{@ship1.reload.location_x}.by(50)
-
-        expect(response.status).to eq(200)
       end
 
       it "does not update other ships" do
         expect{
-          patch :move, params: {id: @ship1.id, distance: 50}
+          patch :update, params: {id: @ship1.id, distance: 50}
+          expect(response.status).to eq(200)
         }.to change{@ship2.reload.location_x}.by(0).and change{@ship3.reload.location_x}.by(0)
-
-        expect(response.status).to eq(200)
       end
     end
 
