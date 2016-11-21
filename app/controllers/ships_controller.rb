@@ -2,11 +2,11 @@ class ShipsController < ApplicationController
   before_action :set_ship, except: [:index]
 
   def index
-    render json: {ships: Ship.all.map(&:to_json)}
+    render json: Ship.all
   end
 
   def show
-    render json: {ship: @ship.to_json}
+    render json: @ship
   end
 
   def update

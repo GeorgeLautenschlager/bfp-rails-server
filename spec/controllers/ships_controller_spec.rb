@@ -10,15 +10,18 @@ RSpec.describe ShipsController, type: :controller do
   end
 
   describe "GET #index" do
-    it "returns a list of ships in JSON format" do
+    it "returns a list of ships in JSONAPI format" do
       get :index
       expect(response.status).to eq(200)
 
       json = JSON.parse(response.body)
-      expect(json["ships"].count).to eq(@ships.length)
+      expect(json["data"].count).to eq(@ships.length)
 
       @ships.each do |ship|
-        expect(json["ships"]).to include(ship.to_json)
+        serializer = ShipSerializer.new(ship)
+        ship_json = JSON.parse(ActiveModelSerializers::Adapter.create(serializer).to_json)["data"]
+
+        expect(json["data"]).to include(ship_json)
       end
     end
   end
@@ -29,7 +32,11 @@ RSpec.describe ShipsController, type: :controller do
       expect(response.status).to eq(200)
 
       json = JSON.parse(response.body)
-      expect(json["ship"]).to eq(@ship1.to_json)
+
+      serializer = ShipSerializer.new(@ship1)
+      ship_json = JSON.parse(ActiveModelSerializers::Adapter.create(serializer).to_json)["data"]
+
+      expect(json["data"]).to eq(ship_json)
     end
   end
 
