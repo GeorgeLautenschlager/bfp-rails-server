@@ -10,8 +10,7 @@ class ShipsController < ApplicationController
   end
 
   def update
-    binding.pry
-    @ship.update(ship_params)
+    @ship.update_attributes(ship_params)
     render json: @ship
   end
 
