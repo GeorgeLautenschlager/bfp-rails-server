@@ -1,7 +1,3 @@
 class ShipSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location_x, :location_y, :heading
-
-  def heading
-    object.orientation
-  end
+  attributes :id, :name, :location_x, :location_y, :bearing
 end

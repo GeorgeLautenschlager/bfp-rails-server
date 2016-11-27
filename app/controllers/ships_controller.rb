@@ -10,13 +10,17 @@ class ShipsController < ApplicationController
   end
 
   def update
-    @ship.move!(params[:distance].to_i)
-
+    binding.pry
+    @ship.update(ship_params)
     render json: @ship
   end
 
   private
     def set_ship
       @ship = Ship.find(params[:id])
+    end
+
+    def ship_params
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:name, :location_x, :location_y, :heading])
     end
 end
