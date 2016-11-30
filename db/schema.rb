@@ -16,15 +16,18 @@ ActiveRecord::Schema.define(version: 20161130022519) do
   enable_extension "plpgsql"
 
   create_table "fleets", force: :cascade do |t|
-    t.string  "name"
-    t.string  "type"
-    t.integer "game_id"
-    t.integer "player_id"
-    t.integer "commander_id"
-    t.integer "points_limit"
+    t.string   "name"
+    t.string   "type"
+    t.integer  "game_id"
+    t.integer  "player_id"
+    t.integer  "commander_id"
+    t.integer  "points_limit"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "ships", force: :cascade do |t|
+    t.string   "name"
     t.integer  "x_coord"
     t.integer  "y_coord"
     t.integer  "bearing"

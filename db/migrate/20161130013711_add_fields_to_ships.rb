@@ -15,7 +15,6 @@ class AddFieldsToShips < ActiveRecord::Migration[5.0]
 
   def down
     remove_column :ships, :type
-    remove_column :ships, :name
     remove_column :ships, :klass
     remove_column :ships, :hits
     remove_column :ships, :speed

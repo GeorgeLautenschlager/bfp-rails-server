@@ -7,6 +7,8 @@ class CreateFleets < ActiveRecord::Migration[5.0]
       t.integer :player_id
       t.integer :commander_id
       t.integer :points_limit
+
+      t.timestamps
     end
   end
 end
