@@ -2,7 +2,7 @@ class FleetsController < ApplicationController
   before_action :set_fleet, except: [:index]
 
   def index
-    render json: Fleet.all
+    render json: Fleet.all, include: ['ships']
   end
 
   private
