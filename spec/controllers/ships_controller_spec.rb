@@ -46,14 +46,14 @@ RSpec.describe ShipsController, type: :controller do
         expect{
           patch :update, params: {id: @ship1.id, distance: 50}
           expect(response.status).to eq(200)
-        }.to change{@ship1.reload.location_x}.by(50)
+        }.to change{@ship1.reload.x_coord}.by(50)
       end
 
       it "does not update other ships" do
         expect{
           patch :update, params: {id: @ship1.id, distance: 50}
           expect(response.status).to eq(200)
-        }.to change{@ship2.reload.location_x}.by(0).and change{@ship3.reload.location_x}.by(0)
+        }.to change{@ship2.reload.x_coord}.by(0).and change{@ship3.reload.x_coord}.by(0)
       end
     end
 

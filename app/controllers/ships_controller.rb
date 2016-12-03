@@ -10,7 +10,7 @@ class ShipsController < ApplicationController
   end
 
   def update
-    @ship.update_attributes(ship_params)
+    @ship.move!(params[:distance].to_i)
     render json: @ship
   end
 
@@ -20,6 +20,6 @@ class ShipsController < ApplicationController
     end
 
     def ship_params
-      ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:name, :location_x, :location_y, :heading])
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:name, :x_coord, :y_coord, :bearing])
     end
 end

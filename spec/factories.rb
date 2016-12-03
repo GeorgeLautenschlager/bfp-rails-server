@@ -1,16 +1,20 @@
 FactoryGirl.define do
   factory :ship do
     sequence(:name){|n| "ship-#{n}"}
-    location_x 500
-    location_y 500
-    orientation 90
+    sequence(:x_coord){|n| n*100}
+    sequence(:y_coord){|n| n*100}
+    bearing 90
+    points 100
+    size Ship::CRUISER
+    fleet
   end
 
   factory :fleet do
     sequence(:name){|n| "fleet-#{n}"}
-    type "Imperial Navy"
-    
-    factory :fleet_with_ships
+    list "Imperial Navy"
+    points_limit 500
+
+    factory :fleet_with_ships do
       transient do
         ships_count 5
       end

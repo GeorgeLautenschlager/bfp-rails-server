@@ -1,3 +1,3 @@
 class ShipSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location_x, :location_y, :bearing
+  attributes :id, :name, :x_coord, :y_coord, :bearing
 end

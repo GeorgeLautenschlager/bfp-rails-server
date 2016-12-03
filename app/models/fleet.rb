@@ -1,6 +1,7 @@
 class Fleet < ApplicationRecord
   has_many :ships
 
+  validates :points_limit, presence: true
   validate :fleet_points_cost_under_limit
 
   def fleet_points_cost_under_limit
