@@ -1,0 +1,19 @@
+<script>
+
+App.shipChannel = App.cable.subscriptions.create("ShipChannel", {
+  received: function(data) {
+    console.log("received message: " + data.message);
+  },
+  testEvent: function(message) {
+    return this.perform('test_event', {
+      message: message
+    });
+    console.log("sent message: " + message);
+  }
+});
+
+setTimeout(function(){
+  App.shipChannel.testEvent("All ahead full and damn the torpedoes!");
+}, 500);
+
+</script>
