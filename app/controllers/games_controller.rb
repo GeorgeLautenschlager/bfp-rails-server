@@ -1,6 +1,8 @@
 class GamesController < ActionController::Base
+  before_action :set_game
+
   def show
-    render json: @game
+    render json: @game, include: ['players', 'fleets', 'ships']
   end
 
   private
