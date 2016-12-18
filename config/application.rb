@@ -14,6 +14,10 @@ module Bfp
       end
     end
 
+    config.action_cable.allowed_request_origins = [ 
+      %r{http://localhost:.*}
+    ]
+
     ActiveModelSerializers.config.adapter = :json_api # Default: `:attributes`
   end
 end

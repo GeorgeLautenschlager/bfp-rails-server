@@ -1,5 +1,10 @@
 class GamesController < ActionController::Base
-  def new
-    #do nothing
+  def show
+    render json: @game
   end
+
+  private
+    def set_game
+      @game = Game.find(params[:id])
+    end
 end

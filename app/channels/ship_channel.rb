@@ -7,7 +7,6 @@ class ShipChannel < ApplicationCable::Channel
 
   def test_event(data)
     message = "Like throwing eggs at a stone wall."
-    binding.pry
     ActionCable.server.broadcast(uuid, message: message)
   end
 end
